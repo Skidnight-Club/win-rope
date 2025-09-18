@@ -1,0 +1,16 @@
+# Challenges & Artifacts
+./win-rope/01.ret2win/ret2win
+*flag.txt
+
+# Objectes and executables
+*.a
+*.o
+*.so
+*.exe
+*.dll
+*.dyn
+*.lib
+*.obj
+*.pdb
+*.rsc
+*.coff
