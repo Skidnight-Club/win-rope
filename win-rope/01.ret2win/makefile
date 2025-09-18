@@ -7,3 +7,7 @@ CFLAGS   := -O2 -fno-PIE -fno-stack-protector -U_FORTIFY_SOURCE
 
 all:
 	$(CC) $(CFLAGS) ret2win.c -o ret2win.exe
+
+
+clean: ret2win.exe
+	rm ret2win.exe
