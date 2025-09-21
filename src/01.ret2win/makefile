@@ -2,13 +2,16 @@ PROJECT  := ret2win
 
 PREFIX   := x86_64-w64-mingw32
 
+BIN      := $(shell pwd)/../../bin
+EXE      := $(BIN)/$(PROJECT).exe
+
 CC       := $(PREFIX)-gcc
 CFLAGS   := -O0 -fno-PIE -fno-stack-protector -U_FORTIFY_SOURCE -masm=intel -Wl,--disable-dynamicbase,--disable-nxcompat
 
-all: $(PROJECT).exe
+all: $(EXE)
 
-$(PROJECT).exe: ret2win.c
-	$(CC) $(CFLAGS) $^ -o ret2win.exe
+$(EXE): $(PROJECT).c
+	$(CC) $(CFLAGS) $^ -o $(EXE)
 
-clean: ret2win.exe
-	rm ret2win.exe
+clean: $(EXE)
+	rm $(EXE)

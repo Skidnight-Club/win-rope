@@ -1,5 +1,5 @@
 all:
-	make -C win-rope
+	make -C src
 
 clean:
-	make -C win-rope clean
+	make -C src clean

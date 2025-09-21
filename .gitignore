@@ -1,16 +1,11 @@
 # Sources
 *.asm
 
-# Challenges & Artifacts
-./win-rope/01.ret2win/ret2win
-./win-rope/01.ret2win/ret2win.exe
-
 # Objectes and executables
 *.a
 *.o
 *.so
 *.bin
-*.exe
 *.dll
 *.dyn
 *.lib
@@ -18,3 +13,12 @@
 *.pdb
 *.rsc
 *.coff
+
+### DO NOT IGNORE
+# Challenges & Artifacts
+!src/01.ret2win/ret2win
+!src/01.ret2win/ret2win.zip
+!src/02.split/split
+!src/02.split/split.zip
+
+!/bin/*.exe
