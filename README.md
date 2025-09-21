@@ -11,6 +11,8 @@
 
 ### [Challenges](#bin)
 Compiled ROP Emporium interpretations
+[1 - ret2win](#bin/ret2win.exe)
+[2 - split](#bin/split.exe)
 
 ### Helpers
 ```bash
