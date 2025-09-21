@@ -1,20 +1,53 @@
 #include <stdio.h>
+#include <unistd.h>
 
-int main(void)
+const char* filename = 0;
+
+int __attribute__((naked)) useful_gadget(void)
 {
-    fputs("ret2win by ROP Emporium\nx86_64\n\n"
+   asm volatile (
+     "pop  rbp\r\n"
+     "ret\r\n"
+   );
+}
+
+void win(void)
+{
+    puts("Flag captured.");
+}
+
+void pwnme(void)
+{
+    fputs("ret2win by ROP Emporium (modified by VPR for win\nx86_64)\n\n"
           "For my first trick, I will attempt to fit 56 bytes of user input into 32 bytes of stack buffer!\n"
           "What could possibly go wrong?\n"
-          "You there, may I have your input please? And don't worry about null bytes, we're using read()!\n> ", stdout);
+          "You there, may I have your input please? And don't worry about null bytes, we're using fread()!\n\n> ", stdout);
+    fflush(stdout);
 
-    char buffer[16] = { 0 };
-    if (scanf("%s", buffer) != 1)
+    char buffer[32] = { 0 };
+    FILE* fp = NULL;
+    if ( filename && (fp = fopen(filename, "rb")) )
     {
-        fputs("Failed to read your input.\n\nExiting\n", stderr);
-        return 1;
+        fseek(fp, 0, SEEK_END);
+        long n_bytes = ftell(fp);
+        fseek(fp, 0, SEEK_SET);
+        fread(buffer, n_bytes, sizeof(char), fp);
+        fclose(fp);
+    }
+    else
+    {
+        read(0, buffer, 56);
     }
 
-    fputs("Thank you!\n\nExiting\n", stdout);
+    puts("Thank you!");
+}
 
+int main(int argc, char** argv)
+{
+    if (argc > 1) { filename = argv[1]; };
+    setvbuf(stdout, 0, 2, 0);
+    pwnme();
+    puts("\nExiting");
+    fflush(stdout);
     return 0;
 }

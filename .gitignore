@@ -1,11 +1,15 @@
+# Sources
+*.asm
+
 # Challenges & Artifacts
 ./win-rope/01.ret2win/ret2win
-*flag.txt
+./win-rope/01.ret2win/ret2win.exe
 
 # Objectes and executables
 *.a
 *.o
 *.so
+*.bin
 *.exe
 *.dll
 *.dyn
