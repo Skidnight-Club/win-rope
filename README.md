@@ -9,9 +9,11 @@
 </p>
 <br>
 
+### [Challenges](#bin)
+Compiled ROP Emporium interpretations
+
 ### Helpers
 ```bash
 FILENAME="" objdump -dMintel "${FILENAME}" 2>&1 > "${FILENAME}.objdump"
 FILENAME="" objdump -dMintel "${FILENAME}" 2>&1 | grep -E '[0-9]{16}\s<.*>:$'
-FILENAME="" checksec --file="${FILENAME}"
 ```
